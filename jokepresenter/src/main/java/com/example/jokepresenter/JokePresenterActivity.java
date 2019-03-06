@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
+import android.view.MenuItem;
+import android.widget.TextView;
 
 import org.parceler.Parcels;
 
@@ -18,7 +19,7 @@ public class JokePresenterActivity extends AppCompatActivity {
         return intent;
     }
 
-    private EditText jokeEt;
+    private TextView jokeTV;
 
     private JokePresenterModel jokeModel;
 
@@ -27,10 +28,23 @@ public class JokePresenterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joke_presenter);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         getExtras();
 
-        jokeEt = findViewById(R.id.joke_et);
-        jokeEt.setText(jokeModel.getJoke());
+        jokeTV = findViewById(R.id.joke_tv);
+        jokeTV.setText(jokeModel.getJoke());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 
     private void getExtras() {

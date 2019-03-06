@@ -28,8 +28,8 @@ public class MainTest {
         onView(withId(R.id.fragment)).check(matches(isDisplayed()));
         onView(withId(R.id.button)).check(matches(isDisplayed()));
         onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.joke_et)).check(matches(isDisplayed()));
-        onView(withId(R.id.joke_et)).check(matches(not(withText(""))));
+        onView(withId(R.id.joke_tv)).check(matches(isDisplayed()));
+        onView(withId(R.id.joke_tv)).check(matches(not(withText(""))));
     }
 
 }
